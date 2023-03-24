@@ -80,7 +80,12 @@ y = np.argmax(x)
 
 
 #### 16. Subtract the mean of each row of a matrix (★★☆)
-`hint: mean(axis=,keepdims=)`
+
+np.random.seed(4224)
+a = np.random.random((6,2))
+
+b = np.mean(a, axis=1, keepdims=True)
+x
 
 #### 17. How to get the n largest values of an array (★★★)
 `Z = np.arange(10000)
@@ -88,5 +93,20 @@ np.random.shuffle(Z)
 n = 5
 hint: np.argsort | np.argpartition`
 
+a = np.arange(10000)
+np.random.shuffle(a)
+
+b = np.argsort(b)
+
+c = a[b]
+n = 5
+
+largest = c[-n : ]
+
 #### 18. Create a random 5*3 matrix and replace items that are larger than 4 by their squares ( Example:  6 --> 36) 
-`hint: np.where`
+
+n = np.random.random((5,3))
+
+np.where(n>4)
+
+x = n**2
