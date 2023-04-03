@@ -89,7 +89,13 @@ FROM bank.trans
 WHERE account_id IN (396)
 GROUP BY type;
 
-SELECT account_id, TRANSLATE(type, 'PRIJEM', 'INCOMING') AS transaction_type, sum(amount) AS total_amount
+SELECT account_id,
+CASE
+    WHEN type = "PRIJEM" THEN "INCOMING"
+    WHEN type = "VYDAJ" THEN "OUTGOING"
+END AS transaction_type,
+CONVERT(sum(amount), SIGNED) AS total_amount
 FROM bank.trans
 WHERE account_id IN (396)
-GROUP BY type;
+GROUP BY type
+
