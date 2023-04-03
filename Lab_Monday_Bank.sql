@@ -78,4 +78,18 @@ GROUP BY date
 HAVING MAX(date) < (930907)
 ORDER BY date DESC;
 
+SELECT date, duration, count(loan_id)
+FROM bank.loan
+GROUP BY date, duration
+HAVING date LIKE ('9712%')
+ORDER BY date;
 
+SELECT account_id, type, sum(amount)
+FROM bank.trans
+WHERE account_id IN (396)
+GROUP BY type;
+
+SELECT account_id, TRANSLATE(type, 'PRIJEM', 'INCOMING') AS transaction_type, sum(amount) AS total_amount
+FROM bank.trans
+WHERE account_id IN (396)
+GROUP BY type;
