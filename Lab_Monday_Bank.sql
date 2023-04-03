@@ -54,3 +54,28 @@ WHERE account_id = (793)
 ORDER BY date DESC
 LIMIT 10;
 
+
+SELECT district_id, count(client_id)
+FROM bank.client
+WHERE district_id < 10
+GROUP BY district_id
+ORDER BY district_id;
+
+SELECT type, count(card_id)
+FROM bank.card
+GROUP BY type
+ORDER BY count(card_id) DESC;
+
+SELECT account_id, sum(amount) AS loan_amount
+FROM bank.loan
+GROUP BY account_id
+ORDER BY sum(amount) DESC
+LIMIT 10;
+
+SELECT date, count(loan_id)
+FROM bank.loan
+GROUP BY date
+HAVING MAX(date) < (930907)
+ORDER BY date DESC;
+
+
