@@ -32,3 +32,18 @@ FROM sakila.film AS f
 JOIN sakila.language AS l
 ON f.language_id=l.language_id
 WHERE f.title like 'M%';
+
+SELECT s.first_name, s.last_name, sum(p.amount) 
+FROM sakila.staff AS s
+JOIN sakila.payment AS p
+ON s.staff_id=p.staff_id
+WHERE p.payment_date LIKE '2005-08%'
+GROUP BY s.staff_id;
+
+SELECT f.title, count(fa.actor_id)
+FROM sakila.film AS f
+JOIN sakila.film_actor AS fa
+ON f.film_id=fa.actor_id
+GROUP BY f.film_id
+ORDER BY count(fa.actor_id);
+
