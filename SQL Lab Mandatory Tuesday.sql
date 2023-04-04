@@ -43,7 +43,36 @@ GROUP BY s.staff_id;
 SELECT f.title, count(fa.actor_id)
 FROM sakila.film AS f
 JOIN sakila.film_actor AS fa
-ON f.film_id=fa.actor_id
+ON f.film_id=fa.film_id
 GROUP BY f.film_id
-ORDER BY count(fa.actor_id);
+ORDER BY count(fa.actor_id) DESC;
 
+SELECT c.first_name, c.last_name, sum(p.amount)
+FROM sakila.customer AS c
+JOIN sakila.payment AS p
+ON c.customer_id=p.customer_id
+GROUP BY c.customer_id
+ORDER BY c.last_name;
+
+SELECT a.actor_id
+FROM sakila.film_actor AS a
+LEFT JOIN sakila.film AS f
+ON a.film_id=f.film_id
+WHERE a.film_id IS NULL;
+
+SELECT a.address
+FROM sakila.address AS a
+LEFT JOIN sakila.customer AS c
+ON a.address_id=c.address_id
+WHERE c.customer_id IS NULL
+HAVING a.address LIKE '%e';
+
+SELECT f.title, count(r.rental_id)
+FROM sakila.rental AS r
+JOIN sakila.inventory AS i
+ON r.inventory_id=i.inventory_id
+JOIN sakila.film AS f
+ON f.film_id=i.film_id
+GROUP BY f.film_id
+ORDER BY count(r.rental_id) DESC
+LIMIT 1;
