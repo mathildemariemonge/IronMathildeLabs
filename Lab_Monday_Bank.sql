@@ -97,5 +97,23 @@ END AS transaction_type,
 CONVERT(sum(amount), SIGNED) AS total_amount
 FROM bank.trans
 WHERE account_id IN (396)
-GROUP BY type
+GROUP BY type;
 
+SELECT account_id,
+CASE
+    WHEN type = "PRIJEM" THEN "INCOMING"
+    WHEN type = "VYDAJ" THEN "OUTGOING"
+END AS transaction_type,
+CONVERT(sum(amount), SIGNED) AS total_amount
+FROM bank.trans
+WHERE account_id IN (396)
+GROUP BY type
+AS source_table PIVOT(
+	account_id 
+    FOR transaction_type IN (
+        [INCOMING], 
+        [OUTGOING])
+) AS pivot_table
+
+
+ 
