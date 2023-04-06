@@ -43,4 +43,37 @@ JOIN sakila.city AS ci ON a.city_id=ci.city_id
 JOIN sakila.country AS co ON ci.country_id=co.country_id
 WHERE co.country='Canada';
 
-SELECT 
+SELECT title
+FROM sakila.film
+WHERE film_id IN (SELECT film_id
+					FROM sakila.film_actor
+                    WHERE actor_id = (SELECT actor_id
+										FROM sakila.film_actor AS fa
+										GROUP BY fa.actor_id
+                                        ORDER BY count(film_id) DESC
+                                        LIMIT 1));
+
+
+SELECT title
+FROM sakila.film
+WHERE film_id IN (SELECT film_id
+					FROM sakila.inventory
+                    WHERE inventory_id IN (SELECT inventory_id
+											FROM sakila.rental
+                                            WHERE rental_id IN (SELECT rental_id
+																	FROM rental
+																	WHERE customer_id = (SELECT customer_id
+																						FROM sakila.payment
+																						GROUP BY customer_id
+																						ORDER BY sum(amount) DESC
+																						LIMIT 1))));
+                                                                                        
+					
+                    
+SELECT first_name, last_name
+FROM sakila.customer
+WHERE customer_id IN (SELECT customer_id
+						FROM sakila.payment
+                        WHERE amount > (SELECT avg(amount)
+											FROM sakila.payment))
+ORDER BY first_name, last_name;
