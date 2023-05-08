@@ -1,0 +1,48 @@
+Last login: Thu Apr 27 15:04:52 on ttys008
+(base) mm527x@ALT04946 Spotify Week % ls a
+ls: a: No such file or directory
+(base) mm527x@ALT04946 Spotify Week % vim .gitignore
+(base) mm527x@ALT04946 Spotify Week % vim .gitignore 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*.xml
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+# Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+# Project files
+[Bb]uild/
+
+# Subversion files
+.svn
+
+# Microsoft Office temporary files
+~$*
+
+config.py
+credentials
