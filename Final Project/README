@@ -1,4 +1,7 @@
-The “Call Me Sexist” Dataset: 
+
+Call Me Out!
+
+Hate speech has become a pervasive problem in today's society, with its potential to spread negativity, fuel conflicts, and incite violence. Therefore, detecting and preventing hate speech has become a crucial task. Machine learning techniques have proved to be an effective tool in hate speech detection. These algorithms can analyze vast amounts of data, identify patterns and classify content based on predefined criteria. By automating the detection process, machine learning can save time, effort and resources compared to manual methods. Furthermore, machine learning models can learn and adapt over time, improving their accuracy and efficiency in identifying and filtering hate speech. Therefore, the application of machine learning techniques in hate speech detection has become a relevant area of research with the potential to make a significant impact in promoting a safer and more inclusive online environment.
 
 The “Call me sexist but” data set consists of  16,914 annotated tweets collected over a 2 months period. 
 
